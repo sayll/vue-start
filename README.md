@@ -1,30 +1,26 @@
-# vue
+# vue-start
 
-> A Vue.js project
+> A Vue.js Start
 
 ## Build Setup
 
 ``` bash
-# install dependencies
+# 下载依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 开启服务 at localhost:3000
 npm run dev
 
-# build for production with minification
+# 打包资源
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# 分析资源依赖
+npm run report
 
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
+# 测试
 npm test
-```
 
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+# 发布式打包：eslint检测》单元测试》打包
+npm run deploy
+
+```
