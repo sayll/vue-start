@@ -4,7 +4,7 @@
 > - 适用于单页与多页应用.
 
 ----
-<b>Vue 用户请转至：[vue-start](https://github.com/sayll/vue-start)</b>
+<b>ie9+ 用户请转至：[avalon-webpack-start](https://github.com/sayll/avalon-webpack-start)</b>
 
 <b>React 用户请转至：[react-webpack-start](https://github.com/sayll/react-webpack-start)</b>
 
