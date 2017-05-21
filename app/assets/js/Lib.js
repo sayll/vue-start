@@ -1,2 +1,1 @@
-import 'assets/css/common.css'
-console.log(233333)
+import '@/assets/css/common.css'

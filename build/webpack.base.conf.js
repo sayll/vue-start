@@ -18,8 +18,9 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': utils.resolve(config.path.appPath),
-      'assets': utils.resolve(config.path.assetsPath),
-      'components': utils.resolve(config.path.componentsPath)
+      '@lib': utils.resolve(config.path.assetsPath, 'js/Lib.js'),
+      '@assets': utils.resolve(config.path.assetsPath),
+      '@components': utils.resolve(config.path.componentsPath)
     }
   },
   plugins: [
