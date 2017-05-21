@@ -2,9 +2,10 @@ const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 
 module.exports = {
-  entry: utils.getEntries(utils.resolve(config.path.viewsPath,'**/*.js')),
+  entry: utils.getEntries(utils.resolve(config.path.viewsPath, '**/*.js')),
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -59,7 +60,7 @@ module.exports = {
         use: {
           loader: 'url-loader',
           query: {
-            limit: 1000,
+            limit: 10240,
             name: utils.assetsPath('img/[name].[hash:7].[ext]')
           }
         }
@@ -69,11 +70,27 @@ module.exports = {
         use: {
           loader: 'url-loader',
           query: {
-            limit: 1000,
+            limit: 10240,
+            publicPath: `../../`, // 修复引用文字字体路劲错误
             name: utils.assetsPath('font/[name].[hash:7].[ext]')
           }
         }
       }
     ]
   }
+}
+
+// 不是测试环境，则添加Dll依赖
+if (process.env.BABEL_ENV !== 'test') {
+  module.exports.plugins.push(
+    new webpack.DllReferencePlugin({
+      context: '/',
+      manifest: require(utils.resolve(config.path.dllPath, `vendors.json`))
+    }),
+    new HtmlWebpackIncludeAssetsPlugin({
+      assets: [`${config.path.dllPath.replace(`${config.path.distPath}/`, '')}/vendors.js`],
+      append: false,
+      hash: true
+    })
+  )
 }

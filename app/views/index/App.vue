@@ -1,7 +1,7 @@
 <template lang="pug">
   div#app
-    img(src="../../../assets/logo.png")
-    .hello  2344
+    img(src="~assets/logo.png")
+    router-view
 </template>
 
 <script>
@@ -15,7 +15,6 @@
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     text-align: center;
     margin-top: 60px;
-    display: flex;
     & .hello{
       color: red;
     }
