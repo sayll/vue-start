@@ -1,4 +1,3 @@
-const path = require('path')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -53,21 +52,21 @@ const webpackConfig = merge(baseWebpackConfig, {
           module.resource &&
           /\.js$/.test(module.resource) &&
           module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
+            utils.resolve('node_modules')
           ) === 0
         )
       }
     }),
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
-    new webpack.optimize.CommonsChunkPlugin({
+    /*new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
       chunks: ['vendor']
-    }),
+    }),*/
     // copy custom static assets
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
+        from: utils.resolve(config.path.staticPath),
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
@@ -100,7 +99,7 @@ if (config.build.bundleAnalyzerReport) {
 
 module.exports = webpackConfig
 
-const pages = utils.getEntries('./src/module/**/*.html')
+const pages = utils.getEntries(utils.resolve(config.path.viewsPath,'**/*.html'))
 
 for (let page in pages) {
   // 配置生成的html文件，定义路径等

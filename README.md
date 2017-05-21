@@ -1,6 +1,7 @@
 # vue-start
 
 > A Vue.js Start
+> - 适用于单页与多页应用.
 
 ## Build Setup
 

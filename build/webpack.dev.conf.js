@@ -25,7 +25,7 @@ module.exports = merge(baseWebpackConfig, {
   ]
 })
 
-const pages = utils.getEntries('./src/module/**/*.html')
+const pages = utils.getEntries(utils.resolve(config.path.viewsPath, '**/*.html'))
 
 for (let page in pages) {
   // 配置生成的html文件，定义路径等

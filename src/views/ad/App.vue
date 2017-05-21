@@ -1,11 +1,13 @@
 <template lang="pug">
   div#app
     img(src="../../assets/logo.png")
-    .hello  2344
-    router-view
+    <i class="icon iconfont icon-delete"></i>
+    p 234
 </template>
 
 <script>
+  import '../../assets/js/Lib';
+
   export default {
     name: 'app'
   }

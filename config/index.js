@@ -1,6 +1,14 @@
 const path = require('path')
 
 module.exports = {
+  path: {
+    appPath: 'src',
+    testPath: 'test',
+    staticPath: 'static',
+    viewsPath: 'src/views',
+    assetsPath: 'src/assets',
+    componentsPath: 'src/components'
+  },
   build: {
     env: require('./prod.env'),
     // 入口

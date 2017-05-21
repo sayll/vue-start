@@ -1,7 +1,7 @@
 <template lang="pug">
   div#app
-    img(src="../../assets/logo.png")
-    router-view
+    img(src="../../../assets/logo.png")
+    .hello  2344
 </template>
 
 <script>
