@@ -16,7 +16,7 @@ module.exports = {
     // npm install --save-dev compression-webpack-plugin
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
-    // `npm run build --report` ： 查看捆绑分析器报表
+    // `npm run report ： 查看捆绑分析器报表
     // Set to `true` or `false` to always turn it on or off
     bundleAnalyzerReport: process.env.report
   },

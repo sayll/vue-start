@@ -1,0 +1,46 @@
+env:
+  es6: true
+  node: true
+  mocha: true
+  jest: true
+  browser: true
+
+parser: babel-eslint
+
+extends:
+  - eslint:recommended
+  - standard
+
+parserOptions:
+  ecmaVersion: 7
+  sourceType: module
+
+plugins:
+  - html
+
+rules:
+  arrow-parens:
+    - warn
+    - as-needed
+  brace-style:
+    - error
+    - stroustrup
+  comma-dangle:
+    - error
+    - only-multiline
+  eol-last: off
+  import/no-unresolved: off
+  linebreak-style: off
+  no-console: off
+  no-plusplus: off
+  no-underscore-dangle: off
+  no-unused-vars: warn
+  quotes:
+    - error
+    - single
+  semi: off
+
+globals:
+  document: false
+  window: false
+  localStorage: true
