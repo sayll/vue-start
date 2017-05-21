@@ -3,9 +3,7 @@ const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const vendors = [
-  'vue/dist/vue.esm.js'
-]
+
 // 清除目录，重新生成
 rm(utils.resolve(config.path.distPath), () => {})
 
@@ -16,7 +14,7 @@ let webpackConfig = {
     library: '[name]'
   },
   entry: {
-    vendors: vendors
+    vendors: config.vendors
   },
   plugins: [
     new webpack.DllPlugin({

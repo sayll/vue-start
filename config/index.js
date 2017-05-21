@@ -13,6 +13,9 @@ const filesPath = {
 
 module.exports = {
   path: filesPath,
+  vendors: [ // 添加依赖
+    'vue/dist/vue.esm.js'
+  ],
   build: {
     env: require('./prod.env'),
     // 入口
