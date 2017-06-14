@@ -17,6 +17,7 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
+      'static': utils.resolve(config.path.staticPath),
       '@': utils.resolve(config.path.appPath),
       '@lib': utils.resolve(config.path.assetsPath, 'js/Lib.js'),
       '@assets': utils.resolve(config.path.assetsPath),
