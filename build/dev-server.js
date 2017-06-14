@@ -64,7 +64,7 @@ app.use(hotMiddleware)
 app.use('/static', express.static(utils.resolve(config.path.staticPath)))
 app.use('/', express.static(utils.resolve(config.path.distPath)))
 
-const uri = 'http://localhost:' + port
+const uri = 'http://127.0.0.1:' + port
 
 let _resolve
 const readyPromise = new Promise(resolve => {

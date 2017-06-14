@@ -44,7 +44,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     // split vendor js into its own file
-    new webpack.optimize.CommonsChunkPlugin({
+    /*new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module, count) {
         // any required modules inside node_modules are extracted to vendor
@@ -56,7 +56,7 @@ const webpackConfig = merge(baseWebpackConfig, {
           ) === 0
         )
       }
-    }),
+    }),*/
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
     /*new webpack.optimize.CommonsChunkPlugin({
@@ -104,6 +104,7 @@ for (let page in pages) {
     filename: page + '.html',
     template: pages[page],
     inject: true,
+    chunks : ['main', page],
     excludeChunks: Object.keys(pages).filter(item => {
       return (item !== page)
     }),
@@ -120,6 +121,16 @@ for (let page in pages) {
       minifyURLs: true
     }
   }
+  conf.chunksSortMode = function (a, b) { // 按照配置排序
+    let index = {}, i = 1,
+      len           = conf.chunks.length;
+    for (; i <= len; i++) {
+      index[conf.chunks[len - i]] = i;
+    }
+    let aI = index[a.origins[0].name],
+      bI = index[b.origins[0].name];
+    return aI && bI ? bI - aI : -1;
+  };
   webpackConfig.plugins.push(new HtmlWebpackPlugin(conf))
 }
 

@@ -5,7 +5,9 @@ const vueLoaderConfig = require('./vue-loader.conf')
 const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin')
 
 module.exports = {
-  entry: utils.getEntries(utils.resolve(config.path.viewsPath, '**/*.js')),
+  entry: Object.assign(utils.getEntries(utils.resolve(config.path.viewsPath, '**/*.js')), {
+    main: [utils.resolve(config.path.appPath, 'index.js')]
+  }),
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
@@ -47,7 +49,11 @@ module.exports = {
       {
         test: /\.js$/,
         use: ['happypack/loader?id=Js'],
-        include: [utils.resolve(config.path.appPath), utils.resolve(config.path.testPath)]
+        include: [
+          utils.resolve(config.path.appPath),
+          utils.resolve(`${config.path.staticPath}/lib/util`),
+          utils.resolve(config.path.testPath)
+        ]
       },
       {
         test: /\.vue$/,
@@ -65,17 +71,7 @@ module.exports = {
             limit: 10240,
             name: utils.assetsPath('img/[name].[hash:7].[ext]')
           }
-        },
-          {
-            loader: 'image-webpack-loader',
-            query: {
-              progressive: true,
-              pngquant: {
-                quality: '65-90',
-                speed: 4
-              }
-            }
-          }
+        }
         ]
       },
       {

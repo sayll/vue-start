@@ -32,10 +32,21 @@ for (let page in pages) {
   const conf = {
     filename: page + '.html',
     template: pages[page],
+    chunks: ['main', page],
     inject: true,
     excludeChunks: Object.keys(pages).filter(item => {
       return (item !== page)
     })
   }
+  conf.chunksSortMode = function (a, b) { // 按照配置排序
+    let index = {}, i = 1,
+      len           = conf.chunks.length;
+    for (; i <= len; i++) {
+      index[conf.chunks[len - i]] = i;
+    }
+    let aI = index[a.origins[0].name],
+      bI = index[b.origins[0].name];
+    return aI && bI ? bI - aI : -1;
+  };
   module.exports.plugins.push(new HtmlWebpackPlugin(conf))
 }

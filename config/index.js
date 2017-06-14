@@ -14,6 +14,9 @@ const filesPath = {
 module.exports = {
   path: filesPath,
   vendors: [ // 添加依赖
+    'axios',
+    'vuex',
+    'vue-router',
     'vue/dist/vue.esm.js'
   ],
   build: {
